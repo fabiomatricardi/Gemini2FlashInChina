@@ -1,3 +1,7 @@
+# UPDATE 20250524 - Gemini models lags or not respond anymore...
+# ADD Model auto routing from a lilst (max 3 models) as per https://openrouter.ai/docs/features/model-routing
+# Fabio Matricardi
+
 import gradio as gr
 from openai import OpenAI
 
@@ -33,18 +37,20 @@ def respond(
             "HTTP-Referer": "https://thepoorgpuguy.substack.com/", # Optional. Site URL for rankings on openrouter.ai.
             "X-Title": "Fabio Matricardi is The Poor GPU Guy", # Optional. Site title for rankings on openrouter.ai.
         },
-        extra_body={},
-        model="google/gemini-2.0-flash-lite-preview-02-05:free",        
+        extra_body={[
+            "models": ["meta-llama/llama-3.3-70b-instruct:free",
+                               "qwen/qwen-2.5-72b-instruct:free",
+                               "mistralai/mistral-small-3.1-24b-instruct:free"]},
+        model="google/gemini-2.0-flash-exp:free",        
         messages=messages,
         max_tokens=max_tokens,
         stream=True,
-        temperature=temperature,
-    ):
+        temperature=temperature,):
         if message.choices[0].delta.content:
             reply[-1]['content'] += message.choices[0].delta.content
 
         yield reply
-
+    print(f"model used: {message.model}")
 """
 For information on how to customize the ChatInterface, cehck the 
 gradio docs: https://www.gradio.app/docs/chatinterface
