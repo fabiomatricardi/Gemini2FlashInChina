@@ -37,7 +37,7 @@ def respond(
             "HTTP-Referer": "https://thepoorgpuguy.substack.com/", # Optional. Site URL for rankings on openrouter.ai.
             "X-Title": "Fabio Matricardi is The Poor GPU Guy", # Optional. Site title for rankings on openrouter.ai.
         },
-        extra_body={[
+        extra_body={
             "models": ["meta-llama/llama-3.3-70b-instruct:free",
                                "qwen/qwen-2.5-72b-instruct:free",
                                "mistralai/mistral-small-3.1-24b-instruct:free"]},
