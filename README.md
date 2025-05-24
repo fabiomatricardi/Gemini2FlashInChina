@@ -1,6 +1,16 @@
 # Gemini2FlashInChina
 Open Router ai Gradio client for Gemini2 flash working also in China
 
+### 20250524 - update
+Add Model Routing because Gemini API endpoints are not stable
+```
+# UPDATE 20250524 - Gemini models lags a lot or even not respond anymore...
+# ADD Model auto routing from a list (max 3 models) as per https://openrouter.ai/docs/features/model-routing
+# Fabio Matricardi
+```
+Here below you can see that the first call was replied by Meta, the second by Gemini
+
+<img src="https://github.com/fabiomatricardi/Gemini2FlashInChina/raw/main/20250524-modelrouting.png" width=900>
 
 ### Requirements
 ```
